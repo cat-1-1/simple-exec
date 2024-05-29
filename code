@@ -1,0 +1,246 @@
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local SimpleExec = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local ExeContent = Instance.new("TextBox")
+local Execute = Instance.new("TextButton")
+local Clear = Instance.new("TextButton")
+local Text = Instance.new("Frame")
+local Text_2 = Instance.new("TextLabel")
+local Top = Instance.new("TextLabel")
+
+--Properties:
+
+SimpleExec.Name = "SimpleExec"
+SimpleExec.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+SimpleExec.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+SimpleExec.DisplayOrder = 9999
+
+Main.Name = "Main"
+Main.Parent = SimpleExec
+Main.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Main.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.355048865, 0, 0.266666681, 0)
+Main.Size = UDim2.new(0, 251, 0, 273)
+Main.Visible = false
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Title.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0398406386, 0, 0.0293040294, 0)
+Title.Size = UDim2.new(0, 229, 0, 42)
+Title.Font = Enum.Font.SourceSans
+Title.Text = "Simple Exec"
+Title.TextColor3 = Color3.fromRGB(200, 200, 200)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+
+ExeContent.Name = "ExeContent"
+ExeContent.Parent = Main
+ExeContent.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+ExeContent.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ExeContent.BorderSizePixel = 0
+ExeContent.Position = UDim2.new(0.0398406386, 0, 0.245421246, 0)
+ExeContent.Size = UDim2.new(0, 229, 0, 140)
+ExeContent.Font = Enum.Font.SourceSans
+ExeContent.PlaceholderText = "-- Paste in your script here!"
+ExeContent.Text = ""
+ExeContent.TextColor3 = Color3.fromRGB(200, 200, 200)
+ExeContent.TextSize = 14.000
+ExeContent.TextXAlignment = Enum.TextXAlignment.Left
+ExeContent.TextYAlignment = Enum.TextYAlignment.Top
+
+Execute.Name = "Execute"
+Execute.Parent = Main
+Execute.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Execute.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Execute.BorderSizePixel = 0
+Execute.Position = UDim2.new(0.0398406386, 0, 0.816849828, 0)
+Execute.Size = UDim2.new(0, 112, 0, 42)
+Execute.Font = Enum.Font.SourceSans
+Execute.Text = "Execute"
+Execute.TextColor3 = Color3.fromRGB(200, 200, 200)
+Execute.TextScaled = true
+Execute.TextSize = 14.000
+Execute.TextWrapped = true
+
+Clear.Name = "Clear"
+Clear.Parent = Main
+Clear.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Clear.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Clear.BorderSizePixel = 0
+Clear.Position = UDim2.new(0.529880464, 0, 0.816849828, 0)
+Clear.Size = UDim2.new(0, 106, 0, 42)
+Clear.Font = Enum.Font.SourceSans
+Clear.Text = "Clear"
+Clear.TextColor3 = Color3.fromRGB(200, 200, 200)
+Clear.TextScaled = true
+Clear.TextSize = 14.000
+Clear.TextWrapped = true
+
+Text.Name = "Text"
+Text.Parent = SimpleExec
+Text.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+Text.BackgroundTransparency = 0.500
+Text.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Text.BorderSizePixel = 0
+Text.Position = UDim2.new(0, 0, 0.601709425, 0)
+Text.Size = UDim2.new(0, 204, 0, 68)
+Text.Visible = false
+
+Text_2.Name = "Text"
+Text_2.Parent = Text
+Text_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Text_2.BackgroundTransparency = 0.900
+Text_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Text_2.BorderSizePixel = 0
+Text_2.Size = UDim2.new(0, 205, 0, 68)
+Text_2.Font = Enum.Font.SourceSans
+Text_2.TextColor3 = Color3.fromRGB(200, 200, 200)
+Text_2.TextScaled = true
+Text_2.TextSize = 14.000
+Text_2.TextTransparency = 0.500
+Text_2.TextWrapped = true
+Text_2.TextXAlignment = Enum.TextXAlignment.Left
+Text_2.TextYAlignment = Enum.TextYAlignment.Top
+
+Top.Name = "Top"
+Top.Parent = Text
+Top.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Top.BackgroundTransparency = 0.500
+Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Top.BorderSizePixel = 0
+Top.Position = UDim2.new(0, 0, -0.676470578, 0)
+Top.Size = UDim2.new(0, 204, 0, 38)
+Top.Font = Enum.Font.SourceSans
+Top.TextColor3 = Color3.fromRGB(200, 200, 200)
+Top.TextScaled = true
+Top.TextSize = 14.000
+Top.TextWrapped = true
+
+-- Scripts:
+
+local function EOVCOWA_fake_script() -- Execute.LocalScript 
+	local script = Instance.new('LocalScript', Execute)
+
+	local button = script.Parent
+	local textbox = button.Parent.ExeContent
+	
+	button.MouseButton1Click:Connect(function()
+		loadstring(textbox.Text)()
+	end)
+end
+coroutine.wrap(EOVCOWA_fake_script)()
+local function OAPOTT_fake_script() -- Clear.LocalScript 
+	local script = Instance.new('LocalScript', Clear)
+
+	local button = script.Parent
+	local textbox = button.Parent.ExeContent
+	
+	button.MouseButton1Click:Connect(function()
+		textbox.Text = ''
+	end)
+end
+coroutine.wrap(OAPOTT_fake_script)()
+local function PIPTO_fake_script() -- Main.SmoothDrag 
+	local script = Instance.new('LocalScript', Main)
+
+	local Drag = script.Parent.Parent.Main
+	gsCoreGui = game:GetService("CoreGui")
+	gsTween = game:GetService("TweenService")
+	local UserInputService = game:GetService("UserInputService")
+		local dragging
+		local dragInput
+		local dragStart
+		local startPos
+		local function update(input)
+			local delta = input.Position - dragStart
+			local dragTime = 0.04
+			local SmoothDrag = {}
+			SmoothDrag.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+			local dragSmoothFunction = gsTween:Create(Drag, TweenInfo.new(dragTime, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut), SmoothDrag)
+			dragSmoothFunction:Play()
+		end
+		Drag.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = true
+				dragStart = input.Position
+				startPos = Drag.Position
+				input.Changed:Connect(function()
+					if input.UserInputState == Enum.UserInputState.End then
+						dragging = false
+					end
+				end)
+			end
+		end)
+		Drag.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+		UserInputService.InputChanged:Connect(function(input)
+			if input == dragInput and dragging and Drag.Size then
+				update(input)
+			end
+		end)
+	
+end
+coroutine.wrap(PIPTO_fake_script)()
+local function RAEXPYB_fake_script() -- Text_2.LocalScript 
+	local script = Instance.new('LocalScript', Text_2)
+
+	local textlabel = script.Parent
+	local keybind = 'LeftControl'
+	local yap = 'Hello, '..game.Players.LocalPlayer.DisplayName..' Please press '..keybind..' to open the executors ui'
+	textlabel.Text = yap
+end
+coroutine.wrap(RAEXPYB_fake_script)()
+local function TAPMPN_fake_script() -- Top.LocalScript 
+	local script = Instance.new('LocalScript', Top)
+
+	local ExecName = 'Cats SimpleExec'
+	local TextLabel = script.Parent
+	
+	TextLabel.Text = ExecName
+end
+coroutine.wrap(TAPMPN_fake_script)()
+local function TAZA_fake_script() -- SimpleExec.LocalScript 
+	local script = Instance.new('LocalScript', SimpleExec)
+
+	local TextDestroyInteger = 5
+	local gui = script.Parent
+	
+	
+	gui.ResetOnSpawn = false
+	
+	local UserInputService = game:GetService("UserInputService")
+	
+	function onKeyPress(inputObject, gameProcessedEvent)
+		if not gameProcessedEvent then
+			if inputObject.KeyCode == Enum.KeyCode.LeftControl then 
+				if script.Parent.Main.Visible == false then
+					script.Parent.Main.Visible = true
+				else
+					script.Parent.Main.Visible = false
+				end
+			end
+		end
+	end
+	
+	UserInputService.InputBegan:connect(onKeyPress)
+	
+	
+	
+	gui.Text.Visible = true
+	task.wait(TextDestroyInteger)
+	gui.Text.Visible = false
+end
+coroutine.wrap(TAZA_fake_script)()
